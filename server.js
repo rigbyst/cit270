@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const Redis = require('redis');
 
 //import { createHash } from 'node:crypto'
-const port = 3000;
+const port = 443;
 const { createHash } = require('node:crypto');
 
 const redisClient = Redis.createClient({url:'redis://127.0.0.1'});
@@ -26,11 +26,13 @@ const fs = require('fs')
     
 //});
 https.createServer({
-  key: fs.readFileSync('privkey1.pem'),
-  cert: fs.readFileSync('cert1.pem'),
-  chain: fs.readFileSync('fullchain1.pem')
+  key: fs.readFileSync('/etc/letsencrypt/archive/brorigby.cit270.com/privkey1.pem'),
+  cert: fs.readFileSync('/etc/letsencrypt/archive/brorigby.cit270.com/cert1.pem'),
+  chain: fs.readFileSync('/etc/letsencrypt/archive/brorigby.cit270.com/fullchain1.pem')
+  
 },
-app).listen(3000, () => {
+app).listen(port, () => {
+  redisClient.connect();
   console.log('Listening...')
 });
 app.use(bodyParser.json()); //allow json (Javascript Object Notation)requests
