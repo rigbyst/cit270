@@ -31,7 +31,7 @@ const fs = require('fs')
 //   chain: fs.readFileSync('/etc/letsencrypt/archive/brorigby.cit270.com/chain1.pem')
   
 // },
- app).listen(port, () => {
+ app.listen(port, () => {
    redisClient.connect();
    console.log('Listening...')
  });
