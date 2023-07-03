@@ -7,7 +7,7 @@ const Redis = require('redis');
 const port = 3000;
 const { createHash } = require('node:crypto');
 
-const redisClient = Redis.createClient({url:'redis://default:Pa55w0rd@redis-stedi-rigby:6379'});
+const redisClient = Redis.createClient({url:'redis://default@redis-stedi-rigby:6379'});
 
 const https = require('https')
 const fs = require('fs')
